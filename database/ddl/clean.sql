@@ -26,6 +26,9 @@ drop table if exists Visits;
 drop table if exists Lives_In;
 drop table if exists Takes_Care;
 drop table if exists Manages;
+drop table if exists Helps;
+drop table if exists Purchase;
+drop table if exists Cleans;
 -- -----------------------------------------------------
 -- Drop Views
 -- -----------------------------------------------------
@@ -33,7 +36,7 @@ drop view if exists Exhibit_Animals;
 -- -----------------------------------------------------
 -- Drop Indexes
 -- -----------------------------------------------------
-drop index IX_Animal_Names on Animals; # Reset 
+drop index IX_Animal_Names on Animals; 
 -- -----------------------------------------------------
 SET FOREIGN_KEY_CHECKS=1;
 -- -----------------------------------------------------

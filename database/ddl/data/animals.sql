@@ -1,3 +1,6 @@
+-- -----------------------------------------------------
+-- Insert Animals and Corresponding ISA Relationship 
+-- -----------------------------------------------------
 insert into Animals (type,name,birthdate) values (2,'Petronia','1983-6-2');
 insert into Mammals (animal_id,hair_type) values (1,'Blue Hair');
 insert into Animals (type,name,birthdate) values (5,'Viqar','2017-3-16');

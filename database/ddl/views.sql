@@ -20,3 +20,5 @@ where
 -- Access Views 
 -- -----------------------------------------------------
 select * from Exhibit_Animals;
+select * from Animals;
+select * from Exhibits;

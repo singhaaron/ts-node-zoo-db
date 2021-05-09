@@ -1,3 +1,6 @@
+-- -----------------------------------------------------
+-- Insert Customers
+-- -----------------------------------------------------
 insert into Customers (name,phone,email_addr) values
 ('Prent',1388776862,'Prent@yahoo.com'),
 ('Pet',1592800090,'Pet@msn.com'),

@@ -11,15 +11,9 @@ class ZooData:
         self.skin_types = ['Brownie Skin','Green Skin','Blue Skin','Yellow Skin','Red Skin']
         self.hair_types =['Brown Hair','Blue Hair','Silly Hair','Fun Hair']
     def Employees(self,size):
-        """[Employee table]
-        Args:
-            size ([size of employees]): [using random module to make some random employees]
-        Returns:
-            [self]: [to chain with other methods on the instance]
-        """
         table = 'Employees'
-        attributes = ['name','position','age','ssn']
-        mysql_table={'table':'Employees','attributes':['name','position','age','ssn']}
+        attributes = ['name','dept_id','position','age','ssn']
+        mysql_table={'table':'Employees','attributes':['name','dept_id','position','age','ssn']}
         with open("./names/names.txt",'r') as fr: # Name API 
             with open("./names/employees.sql",'w') as fw: # Create Employee Data 
                 fw.write('insert into {}({}) values \n'.format(table,','.join(attributes)))
@@ -28,20 +22,16 @@ class ZooData:
                     position = random.choice(self.department_names)
                     age = random.randint(1,65)
                     ssn=str(random.randint(200, 500)) + str(random.randint(100,500))+str(random.randint(1000,9999))
-                    fw.write("('{}','{}',{},{}),\n".format(name,position,age,ssn))
+                    dpt = random.randint(1,3)
+                    fw.write("('{}',{},'{}',{},{}),\n".format(name,dpt,position,age,ssn))
                 name = linecache.getline('./names/names.txt', random.randint(1,self.lengh_file_names)).strip()
                 position = random.choice(self.department_names)
+                dpt = random.randint(1,3)
                 age = random.randint(1,65)
                 ssn=str(random.randint(200, 500)) + str(random.randint(100,500))+str(random.randint(1000,9999))
-                fw.write("('{}','{}',{},{});".format(name,position,age,ssn))
+                fw.write("('{}',{},'{}',{},{});".format(name,dpt,position,age,ssn))
         return self
     def Cusomers(self,size):
-        """[Customer Table]
-        Args:
-            size ([size of customers]): [using random module to make some random customers]
-        Returns:
-            [self]: [chain other methods to instance]
-        """
         table = 'Customers'
         attributes = ['name','phone','email_addr']
         with open("./names/names.txt","r") as fr:
@@ -71,7 +61,6 @@ class ZooData:
                     fw.write("insert into Animals (type,name,birthdate) values ({},'{}','{}');\n".format(random_animal+1,name,birthday))
                     fw.write(self.Animals_Switch(random_animal+1,mysql_table,i+1))
         return self
-
     def Animals_Switch(self,type,mysql_table,id):
         switcher= {
             # Amphibian
@@ -86,22 +75,74 @@ class ZooData:
             5: "insert into {}s ({}) values ({},{},{});\n".format(mysql_table['tables'][type],','.join(mysql_table['attributes'][type]),id,random.randint(0,20),random.randint(0,10)),
         }
         return switcher.get(type)
-    def Animals_In_Exhibits(self):
-        """[Relationship table for Animals in exhibits]
-        """
-        pass
+    def Animals_In_Exhibits(self,size):
+        table = 'Lives_In'
+        attributes = ['animal_id','exhibit_id']
+        with open("./names/animals_in_exhibits.sql","w") as fw:
+            fw.write('insert into {} ({}) values\n'.format(table,','.join(attributes)))
+            for i in range(1,size):
+                fw.write("({},{}),\n".format(i,random.randint(1,3)))
+            fw.write("({},{});".format(size,random.randint(1,3)))
+    def Takes_Care(self,animals_size,employer_size):
+        table = 'Takes_Care'
+        attributes = ['animal_id','employee_id']
+        with open("./names/takes_care.sql","w") as fw:
+            fw.write('insert into {} ({}) values\n'.format(table,','.join(attributes)))
+            for i in range(1,animals_size):
+                fw.write("({},{}),\n".format(i,random.randint(1,employer_size)))
+            fw.write("({},{});".format(animals_size,random.randint(1,employer_size)))
+    def Cleans(self,employer_size):
+        table = 'Cleans'
+        attributes = ['employee_id','exhibit_id']
+        with open("./names/cleans.sql","w") as fw:
+            fw.write('insert into {} ({}) values\n'.format(table,','.join(attributes)))
+            for i in range(1,employer_size):
+                fw.write("({},{}),\n".format(i,random.randint(1,3))) # Exhibit Size is only 3
+            fw.write("({},{});".format(employer_size,random.randint(1,3))) #Exhibit Size is only 3
+    def Helps(self,employer_size,customer_size):
+        table = 'Helps'
+        attributes = ['employee_id','customer_id']
+        employer_order = random.sample(range(employer_size),employer_size)
+        customer_order = random.sample(range(customer_size),customer_size)
+        with open("./names/helps.sql","w") as fw:
+            fw.write('insert into {} ({}) values\n'.format(table,','.join(attributes)))
+            for i in range(1,customer_size):
+                fw.write("({},{}),\n".format(employer_order[i],customer_order[i])) 
+            fw.write("({},{});".format(employer_order[employer_size-1],customer_order[customer_size-1]))
+    def Purchase(self,customer_size,ticket_size):
+        table = 'Purchase'
+        attributes = ['customer_id','ticket_id']
+        with open("./names/purchase.sql","w") as fw:
+            fw.write('insert into {} ({}) values\n'.format(table,','.join(attributes)))
+            for i in range(1,customer_size):
+                fw.write("({},{}),\n".format(i,random.randint(1,ticket_size))) 
+            fw.write("({},{});".format(customer_size,ticket_size))
+    def Visits(self,customer_size,exhibit_size):
+        table = 'Visits'
+        attributes = ['customer_id','exhibit_id']
+        with open("./names/visits.sql","w") as fw:
+            fw.write('insert into {} ({}) values\n'.format(table,','.join(attributes)))
+            for i in range(1,customer_size):
+                fw.write("({},{}),\n".format(i,random.randint(1,exhibit_size))) 
+            fw.write("({},{});".format(customer_size,exhibit_size))
     def random_data(self,arg):
-        """[NOT DONE YET]
-        Args:
-            arg ([type of random data needed]): [return value of key passed in arg]
-        """
         switch_case = {
             'birthday':'10',
             'phone':str(1)+str(random.randint(100000000,999999999)),
             'ssn':10,
         }
         pass
-        
 
-z1 = ZooData().Employees(500).Cusomers(500).Animals(10000)
+z1 = ZooData()
+# Entitys
+z1.Employees(size=500)
+z1.Customers(size=500)
+z1.Animals(size=10000)
+# Relationships
+z1.Animals_In_Exhibits(animals_size=1000)
+z1.Takes_Care(animals_size=10000,employer_size=500)
+z1.Cleans(employer_size=500)
+z1.Helps(employer_size=250,customer_size=250)
+z1.Purchase(customer_size=500,ticket_size=3)
+z1.Visits(customer_size=497,exhibit_size=3)
 
