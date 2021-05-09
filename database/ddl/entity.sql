@@ -14,7 +14,7 @@ create table Employees (
     name varchar(45),
     position varchar(45),
     age int,
-    ssn int unique key,
+    ssn varchar(10) unique key,
         foreign key (dept_id)
         references Departments (dept_id)
         on delete cascade on update cascade
@@ -51,7 +51,6 @@ create table Exhibits (
 create table Animals (
     animal_id int auto_increment primary key,
     type enum('Invertebrate', 'Reptile', 'Amphibian', 'Mammal', 'Bird') not null,
-    animal varchar(45) unique key,
     name varchar(45),
     birthdate date
 );

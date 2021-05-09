@@ -4,7 +4,7 @@
 create view Exhibit_Animals as
 select 
     Animals.type,
-    Animals.animal,
+    Animals.name,
 	Exhibits.name as Exhibit_Name,
     Exhibits.location,
     Exhibits.climate

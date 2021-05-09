@@ -2,35 +2,51 @@
 
 ---
 
-i. Description
-ii. How To
-iii. Dev Change Log
-IV. Contributors
-V. TODO
-VI. Utility
+1.  Description
+2.  How To
+3.  Dev Change Log
+4.  Contributors
+5.  TODO
+6.  Utility
 
 ### i.Description
 
 ---
 
-Node CRUD - CD application to provide an interface with a database modeling a zoo.
+Node CRUD application to provide an interface with a database modeling a zoo.
 
 - Hosted: AWS EC2 Instance "URL_TBD"
 - Backend: Express Framework
 - Frontend: React Library
 - Database: SQL
+- Database Data: Python Random Module
 - Language: TypeScript
 
 ### ii.How to
 
-- create a `.env` file at root directory w/ the following: BACKEND_PORT, FRONTEND_PORT, HOST, USER, PASSWORD, DATABASE_NAME. The last four come from your mysql credentials. Backend Port is for express and Frontend Port is for React.
-- `cd backend` npm install
-- `cd frontend` npm install
-  ....more later just read the npm scripts for now lol
+1. in order to install both backend/ and frontend/ packages, use either `npm install` or `yarn install`. if you choose `yarn install`, make sure to have yarn globally installed `npm install --global yarn`
+2. create a `.env` file at root directory with the following:
+
+- BACKEND_PORT
+- FRONTEND_PORT
+- HOST
+- USER
+- PASSWORD
+- DATABASE_NAME
+
+3. `cd backend` & `npm install` OR `yarn install`
+4. `cd frontend`& `npm install` OR `yarn install`
+5. `cd backend`& `npm run dev`
+6. `cd frontend`& `yarn start` OR `npm start`
 
 ---
 
 ### iii.Dev Change Log
+
+#### Thursday, April 14, 2021 :: Aaron
+
+- generate queries with python random module
+- tables relationships and constraints finalized
 
 #### Wenesday, April 14, 2021 :: Aaron
 
@@ -47,10 +63,6 @@ Node CRUD - CD application to provide an interface with a database modeling a zo
 | Aaron Singh  |   singhaaron    |
 |    member    | github_username |
 
-### V. TODO
+### V. Utility
 
-- bunch of stuff
-
-### VI.Utility
-
-There's no utility. I got a 70% on my db midterm after a pity curve, so im tryna do extra credit bruh w/ this cake.
+- Extracredit assignment and database final project

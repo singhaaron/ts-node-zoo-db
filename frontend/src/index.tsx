@@ -4,11 +4,11 @@ import GlobalStyle from "./views/css/global";
 import styled from "styled-components";
 
 //API
-import * as API from "./models/Get";
+import * as API from "./models/GET/Get";
 //Styled Components
 const Container = styled.div`
-  color: pink;
-  background-color: grey;
+  color: black;
+  background-color: white;
 `;
 //React Main FC
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
           <hr></hr>
           <ul>
             <li> Animal Type: {data.type}</li>
-            <li> Animal : {data.animal}</li>
+            <li> Animal : {data.name}</li>
             <li> Exhibit Name : {data.Exhibit_Name}</li>
             <li> Physical Location : {data.location}</li>
             <li> Climate : {data.climate}</li>
