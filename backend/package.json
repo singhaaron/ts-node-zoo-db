@@ -4,7 +4,7 @@
   "description": "CSC675 Introduction To Database: ExtraCredit Part 1",
   "server": "server.ts",
   "scripts": {
-    "start": "node build/server.js",
+    "start": "node dist/backend/server.js",
     "dev": "nodemon server.ts",
     "build": "tsc -p ."
   },
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/cors": "^2.8.10",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql": "^2.18.1"

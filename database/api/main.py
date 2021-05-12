@@ -31,7 +31,7 @@ class ZooData:
                 ssn=str(random.randint(200, 500)) + str(random.randint(100,500))+str(random.randint(1000,9999))
                 fw.write("('{}',{},'{}',{},{});".format(name,dpt,position,age,ssn))
         return self
-    def Cusomers(self,size):
+    def Customers(self,size):
         table = 'Customers'
         attributes = ['name','phone','email_addr']
         with open("./names/names.txt","r") as fr:
@@ -139,7 +139,7 @@ z1.Employees(size=500)
 z1.Customers(size=500)
 z1.Animals(size=10000)
 # Relationships
-z1.Animals_In_Exhibits(animals_size=1000)
+z1.Animals_In_Exhibits(1000)
 z1.Takes_Care(animals_size=10000,employer_size=500)
 z1.Cleans(employer_size=500)
 z1.Helps(employer_size=250,customer_size=250)
