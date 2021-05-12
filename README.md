@@ -15,7 +15,6 @@
 
 Node CRUD application to provide an interface with a database modeling a zoo.
 
-- Hosted: AWS EC2 Instance "URL_TBD"
 - Backend: Express Framework
 - Frontend: React Library
 - Database: SQL
